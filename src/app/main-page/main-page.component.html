@@ -1,0 +1,11 @@
+<h1>header {{heroService.mySharedValueString}}</h1>
+<input value="mySharedVAlue" [(ngModel)]="this.heroService.mySharedVAlue"/>
+
+<ul>
+  <li *ngFor="let item of heroService.people;">
+      <span>{{item.name}}</span> 
+  </li>
+  </ul>
+
+<button (click)="addItem()"></button>
+<my-comp [(value)]="heroService.mySharedValueString" [(items)]="heroService.people"></my-comp>

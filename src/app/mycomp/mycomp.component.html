@@ -1,0 +1,18 @@
+<h1>my component with value : {{value}}</h1>
+
+<input [value]="value" (change)="onChange($event)" #ipt1/> <!-- manual binding -->
+
+
+<input value="value" [(ngModel)]="this.value" (ngModelChange)="notifyChange()" #ipt2/>      <!-- model binding: manage automatically live change. NO AUTOMATIC EMIT EVENT -->
+
+<input value="value" [(ngModel)]="this.value" (ngModelChange)="notifyChange()" #ngModelRef="ngModel" class="myclass"/> 
+<span [hidden]="!ngModelRef.dirty"> modificato </span>
+
+<button (click)="addItem()"></button>
+
+<ul>
+    <li *ngFor="let item of items;">
+        <span [appHighlightParams]="'highlight'" [params]='{firstParam: 1, seconParam: 2, thirdParam: 3}' class="is-valid">{{convFunc(item)+1}}</span>
+        <input value="name" [(ngModel)]="item.name" />
+    </li>
+</ul>
